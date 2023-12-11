@@ -41,7 +41,7 @@ if (! function_exists('findMigration')) {
         foreach (glob(database_path('migrations/*.php')) as $filename) {
             // Check if the migration file has the Schema::create() line with the given table name
             if (strpos(file_get_contents($filename), "Schema::create('$tableName'")) {
-                return basename($filename);
+                return database_path(sprintf('migrations/%s', basename($filename)));
             }
         }
 

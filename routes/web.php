@@ -36,6 +36,7 @@ use App\Http\Controllers\WebsiteTeamsController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
+dd(database_path());
 // Language route
 Route::get('/language/{locale}', LocaleController::class)->name('language.select');
 

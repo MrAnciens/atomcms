@@ -12,6 +12,7 @@ return [
         'default_language' => env('APP_LOCALE', 'en'),
         'debug_mode_enabled' => env('APP_DEBUG', false),
         'site_environment' => env('APP_ENV'),
+        'emulator_type' => env('EMULATOR_TYPE', 'comet'),
     ],
 
     'reactions' => [

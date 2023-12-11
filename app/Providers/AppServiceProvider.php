@@ -8,6 +8,7 @@ use App\Services\RconService;
 use App\Services\SettingsService;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
@@ -46,7 +47,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
         if (config('habbo.site.force_https')) {
             URL::forceScheme('https');
         }
