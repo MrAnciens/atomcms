@@ -108,7 +108,9 @@ class User extends Authenticatable
 
     public function ban(): HasOne
     {
-        return $this->hasOne(Ban::class, 'user_id')->where('ban_expire', '>', time());
+        return $this->hasOne(Ban::class, 'user_id')
+            ->where('type', '!=', 'ip')
+            ->where('ban_expire', '>', time());
     }
 
     public function settings(): HasOne

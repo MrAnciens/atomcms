@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Models\Ban;
 use Closure;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +15,10 @@ class BannedMiddleware
     {
         $authenticated = Auth::check();
         $ipBan = Ban::where('ip', '=', $request->ip())
+            ->where(function (Builder $query) {
+                $query->where('type', '=', 'ip')
+                    ->orWhere('type', '=', 'machine');
+            })
             ->where('ban_expire', '>', time())
             ->orderByDesc('id')
             ->exists();
